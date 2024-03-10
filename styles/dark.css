@@ -1,0 +1,237 @@
+/* note that Internet Explorer does not support css variables */
+:root {
+    --dark: #000;
+    --medium: #1b1b1b;
+    --light: #2e2e2e;
+}
+
+/* Add transition properties to elements */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pomodoro-container,
+.todo-container,
+.todo-box,
+.tutorial-content,
+.feature-box {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Add transition properties for the dark mode button */
+.dark-mode-button {
+    transition: background-color 0.3s ease;
+}
+
+/* Add transition properties for dark mode toggle */
+.top-dark-mode-button,
+.top-dark-mode-button .dark-toggle,
+.dark-toggle,
+.dark-toggle span {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode-button {
+    background: transparent;
+    border: none;
+    height: 40px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px; /* Adjust margin as needed */
+}
+
+.top-dark-mode-button {
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    transform: rotate(-90deg);
+    z-index: 1000;
+    transition: .3s ease-in;
+}
+
+.top-dark-mode-button .dark-toggle {
+    background: rgb(230, 230, 230);
+    border-color: rgb(230, 230, 230);
+    width: 35px;
+}
+
+.top-dark-mode-button:after {
+    content: 'DARK';
+    position: absolute;
+    color: #fff;
+    transform: rotate(90deg);
+    right: 22px;
+    top: 10px;
+    transition: .1s ease-in;
+}
+
+body.dark-mode .top-dark-mode-button:after {
+    content: 'LIGHT';
+    color: var(--primary);
+    top: 12px;
+}
+
+.dark-toggle {
+    margin: 0;
+    width: 30px;
+    height: 16px;
+    z-index: 20;
+    border-radius: 10px;
+    background: transparent;
+    border: 3px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s ease;
+    transform: rotate(90deg);
+}
+
+body.dark-mode .dark-toggle {
+    background: rgb(67,183,255);
+    background: -o-linear-gradient(left, rgba(67,183,255,1) 0%, rgba(0,221,246,1) 100%);
+    background: -webkit-gradient(linear, left top, right top, from(rgba(67,183,255,1)), to(rgba(0,221,246,1)));
+    background: linear-gradient(90deg, rgba(67,183,255,1) 0%, rgba(0,221,246,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#43b7ff",endColorstr="#00ddf6",GradientType=1);
+    border: none;
+}
+
+.dark-toggle span {
+    height: 20px;
+    width: 20px;
+    left: -8px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    transition: .3s ease;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+body.dark-mode .dark-toggle span {
+    left: 15px;
+    transition: .3s ease;
+}
+
+/* Begin adding your dark mode styles here, like so: */
+body.dark-mode  {
+    background-color: #2e2e2e
+}
+body.dark-mode .header p  {
+    color: white;
+}
+
+body.dark-mode .header h2  {
+    color: white;
+}
+
+body.dark-mode .header   {
+    background-color: #1b1b1b;
+}
+
+body.dark-mode .header .button  {
+    background-color: #2e2e2e;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode .header .button:hover {
+    background-color: #7a7e4f;
+}
+
+body.dark-mode .pomodoro-container {
+    background-color: #201e1e;
+    color: #fff;
+}
+
+body.dark-mode .pomodoro-container .label {
+    color: #fff;
+}
+
+body.dark-mode .pomodoro-container .btn-updown {
+    color: #fff;
+}
+
+body.dark-mode .pomodoro-container .btn-controller {
+    color: #fff;
+}
+
+body.dark-mode .pomodoro-container .playerButton {
+    border-top: solid 3px #ffffff;
+}
+
+body.dark-mode .music-container{
+    --white: #201e1e;
+    --lightblack: #ffffff;
+}
+
+body.dark-mode .music-container .controls i {
+    color: white;
+}
+
+body.dark-mode .music-container .top-bar i {
+    color: white;
+}
+
+body.dark-mode .music-container .play-pause i{
+    -webkit-text-fill-color: white;
+}
+
+body.dark-mode .music-container .controls .play-pause {
+    background: linear-gradient(#fff6f6 0%, var(--darkwhite) 100%);
+}
+
+body.dark-mode .todo-container .input-field textarea {
+    background-color: #201e1e;
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode .todo-box{
+    background-color: #201e1e;
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode .todo-container .pending-tasks span{
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode .todo-container .todoLists .list{
+    background-color: #1b1b1b;
+}  
+
+body.dark-mode .tutorial-content{
+    background-color: #2e2e2e
+}
+
+body.dark-mode .tutorial-content h1{
+    color: white;
+}
+
+body.dark-mode .feature h2{
+    color: white;
+}
+
+body.dark-mode .feature.dark .content{
+    background-color: #1b1b1b;
+}
+
+body.dark-mode .feature.light .content{
+    background-color: #1b1b1b;
+}
+
+body.dark-mode .feature ul li{
+    color: #fff;
+}  
+
+body.dark-mode .feature-box{
+    background-color: #1b1b1b;
+}
+

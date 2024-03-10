@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+.music-container {
+  --pink: #485f36;
+  --violet: #85ad2e;
+  --lightblack: #1f3c17;
+  --white: #f6f8e3;
+  --darkwhite: #cecaca;
+  --pinkshadow: #ffcbdd;
+  --lightbshadow: rgba(0, 0, 0, 0.15);
+}
+
+.music-container * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.music-container *::before,
+.music-container *::after {
+  padding: 0;
+  margin: 0;
+}
+
+.music-container body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 800 px; /* Adjusted minimum height */
+  background: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+}
+
+.music-container .wrapper {
+  max-width: 500px; /* Adjusted maximum width */
+  padding: 20px; /* Adjusted padding */
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  background: var(--white);
+  box-shadow: 0px 6px 10px var(--lightbshadow);
+}
+
+.music-container .top-bar,
+.music-container .progress-area .song-timer,
+.music-container .controls,
+.music-container .music-list .list-header,
+.music-container .music-list ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.music-container .top-bar i,
+.music-container .controls i {
+  font-size: 20px; /* Adjusted font size */
+  color: black;
+  cursor: pointer; /* Added cursor property */
+}
+
+.music-container .top-bar i:first-child {
+  margin-left: -3px; /* Adjusted margin */
+}
+
+.music-container .top-bar span {
+  font-size: 14px; /* Adjusted font size */
+  margin-left: -1px; /* Adjusted margin */
+  color: var(--lightblack);
+}
+
+.music-container .img-area {
+  width: 100%;
+  height: 250px; /* Adjusted height */
+  overflow: hidden;
+  margin-top: 15px; /* Adjusted margin */
+  border-radius: 15px;
+  box-shadow: 0px 6px 8px var(--lightbshadow);
+}
+
+.music-container .img-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.music-container .song-details {
+  text-align: center;
+  margin: 15px 0; /* Adjusted margin */
+}
+
+.music-container .song-details p {
+  color: var(--lightblack);
+}
+
+.music-container .song-details .name {
+  font-size: 18px; /* Adjusted font size */
+}
+
+.music-container .song-details .artist {
+  font-size: 16px; /* Adjusted font size */
+  opacity: 0.9;
+  line-height: 30px; /* Adjusted line height */
+}
+
+.music-container .progress-area {
+  height: 5px; /* Adjusted height */
+  width: 100%;
+  border-radius: 30px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.music-container .progress-area .progress-bar {
+  height: inherit;
+  width: 0%;
+  position: relative;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--pink) 0%, var(--violet) 100%);
+}
+
+.music-container .progress-bar::before {
+  content: "";
+  position: absolute;
+  height: 10px; /* Adjusted height */
+  width: 10px; /* Adjusted width */
+  border-radius: 50%;
+  top: 50%;
+  right: -3px; /* Adjusted right */
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+  background: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.music-container .progress-area:hover .progress-bar::before {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.music-container .progress-area .song-timer {
+  margin-top: 1px;
+}
+
+.music-container .song-timer span {
+  font-size: 12px; /* Adjusted font size */
+  color: var(--lightblack);
+}
+
+.music-container .controls {
+  margin: 20px 0 5px 0; /* Adjusted margin */
+}
+
+.music-container .controls .play-pause {
+  height: 40px; /* Adjusted height */
+  width: 40px; /* Adjusted width */
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(var(--white) 0%, var(--darkwhite) 100%);
+  box-shadow: 0px 0px 3px var(--pink);
+  position: relative;
+}
+
+.music-container .play-pause::before {
+  content: "";
+  height: 32px; /* Adjusted height */
+  width: 32px; /* Adjusted width */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+}
+
+.music-container .play-pause i {
+  height: 32px; /* Adjusted height */
+  width: 32px; /* Adjusted width */
+  line-height: 32px; /* Adjusted line height */
+  text-align: center;
+  background: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.music-container .music-list {
+  position: absolute;
+  background: var(--white);
+  width: 100%;
+  left: 0;
+  bottom: -45%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  padding: 10px 20px; /* Adjusted padding */
+  border-radius: 15px;
+  box-shadow: 0px -5px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.15s ease-out;
+}
+
+.music-container .music-list.show {
+  bottom: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.music-container .list-header {
+  display: flex;
+  justify-content: space-between; /* Align items to the start and end of the container */
+  align-items: center; /* Vertically center items */
+}
+
+.music-container .list-header #close {
+  order: 2; /* Push the close button to the end */
+  font-size: 18px; /* Adjusted font size */
+  color: var(--lightblack);
+  cursor: pointer; /* Added cursor property */
+}
+
+.music-container .list-header .row {
+  display: flex;
+  align-items: center;
+  font-size: 16px; /* Adjusted font size */
+  color: var(--lightblack);
+}
+
+.music-container .list-header .row i {
+  cursor: default;
+}
+
+.music-container .list-header .row span {
+  margin-left: 3px; /* Adjusted margin */
+}
+
+.music-container .music-list ul {
+  margin: 10px 0;
+  max-height: 250px; /* Adjusted max height */
+  overflow: auto;
+}
+
+.music-container .music-list ul::-webkit-scrollbar {
+  width: 0px;
+}
+
+.music-container .music-list ul li {
+  list-style: none;
+  display: flex;
+  cursor: pointer;
+  padding-bottom: 5px;
+  margin-bottom: 3px;
+  color: var(--lightblack);
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.music-container .music-list ul li:last-child {
+  border-bottom: 0px;
+}
+
+.music-container .music-list ul li .row span {
+  font-size: 14px; /* Adjusted font size */
+}
+
+.music-container .music-list ul li .row p {
+  opacity: 0.9;
+}
+
+.music-container ul li .audio-duration {
+  font-size: 14px; /* Adjusted font size */
+}
+
+.music-container ul li.playing {
+  pointer-events: none;
+  color: var(--violet);
+}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomi v2</title>
+    <link rel="stylesheet" href="/Pomi V2/styles/general.css">
+    <link rel="stylesheet" href="/Pomi V2/styles/pomodoro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/Pomi V2/styles/music.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
+    <link rel="stylesheet" href="/Pomi V2/styles/todo.css" />
+    <link rel="stylesheet" href="/Pomi V2/styles/navbar.css" />
+    <link rel="stylesheet" href="/Pomi V2/styles/tutorial-content.css" />
+    <link rel="stylesheet" href="/Pomi V2/styles/dark.css" />
+    <link rel="icon" href="/Pomi V2/images/icon.jpg" type="image/png" sizes="32x32">
+</head>
+<bod class="light">
+    <div class="wrapper">
+        <header class="header">
+            <div class="title-wrapper">
+                <h2 class="webname">Pomi Timer ฅ^•ﻌ•^ฅ</h2>
+                <p class="subtitle">Presented by Group 1</p>
+            </div>
+            <nav class="navbar">
+                <button class="button" onclick="openQuestionnaire()">Questionnaire</button>
+                <button class="button" onclick="scrollToTutorialContent()">?</button>
+                <button class="dark-mode-button" aria-label="dark mode toggle">
+                    <span aria-hidden="true" class="dark-toggle">
+                        <span class="DTspan"></span>
+                    </span>
+                </button>
+            </nav>
+        </header>
+        
+            
+        
+        <div class="main">
+            <!-- Content from HTML2 -->
+            <!-- Pomodoro Timer -->
+            <div class="pomodoro-container">
+
+                <!-- Session -->
+                <div class="pomodoro-item">
+                    <div id="labelSessionBreak" class="label">Session</div>
+                    <div class="row-pomodoro">
+                        <div id="timeLeft">25:00</div>
+                    </div>
+                </div>
+
+                <!-- Session Length -->
+                <div class="pomodoro-item">
+                    <div class="label">Session Length</div>
+                    <div class="row-pomodoro">
+                        <button id="sessionDecrement" class="btn-updown">-</button>
+                        <div id="sessionLength" class="row-pomodoro lengthTime">25</div>
+                        <button id="sessionIncrement" class="btn-updown">+</button>
+                    </div>
+                </div>
+
+                <!-- Break Length -->
+                <div class="pomodoro-item">
+                    <div class="label">Break Length</div>
+                    <div class="row-pomodoro">
+                        <button id="breakDecrement" class="btn-updown">-</button>
+                        <div id="breakLength" class="row-pomodoro lengthTime">5</div>
+                        <button id="breakIncrement" class="btn-updown">+</button>
+                    </div>
+                </div>
+
+                <!-- Total Time -->
+                <div class="pomodoro-item">
+                    <div id="totalTime" class="label">Total Time: 0.00 hours</div>
+                </div>
+
+
+                <!-- Play/Pause/Reset -->
+                <div class="pomodoro-item playerButton">
+                    <div class="row-pomodoro buttonRow">
+                        <button id="buttonPlay" class="btn-controller">
+                            <i id="playIcon" class="fas fa-play" aria-hidden="true"></i>
+                        </button>
+                        <button id="buttonReset" class="btn-controller"> 
+                            <i class="fas fa-sync" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            
+            </div>
+            <!-- End Pomodoro Container -->
+
+            <!-- Modal -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p class="modal-text">Time's up!</p>
+                    <img src="images/catcute.png" alt="Cute Cat">
+                </div>
+            </div>
+            <!-- End Modal -->
+
+        </div>
+
+            <div class="side side1">
+                <div class="music-container">
+                    <!-- Content from HTMLDemo -->
+                    <div class="wrapper">
+                        <div class="top-bar">
+                            <i class="material-icons">expand_more</i>
+                            <span>Now Playing</span>
+                            <i class="material-icons">more_horiz</i>
+                        </div>
+                        <div class="img-area">
+                            <img src="" alt="">
+                        </div>
+                        <div class="song-details">
+                            <p class="name"></p>
+                            <p class="artist"></p>
+                        </div>
+                        <div class="progress-area">
+                            <div class="progress-bar">
+                                <audio id="main-audio" src=""></audio>
+                            </div>
+                            <div class="song-timer">
+                                <span class="current-time">0:00</span>
+                                <span class="max-duration">0:00</span>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            <i id="repeat-plist" class="material-icons" title="Playlist looped">repeat</i>
+                            <i id="prev" class="material-icons">skip_previous</i>
+                            <div class="play-pause">
+                                <i class="material-icons play">play_arrow</i>
+                            </div>
+                            <i id="next" class="material-icons">skip_next</i>
+                            <i id="more-music" class="material-icons">queue_music</i>
+                        </div>
+                        <div class="music-list">
+                            <div class="list-header">
+                                <div class="row">
+                                    <i class= "list material-icons">queue_music</i>
+                                    <span>Music list</span>
+                                </div>
+                                <i id="close" class="material-icons">close</i>
+                            </div>
+                            <ul>
+                                <!-- here li list are coming from js -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side side2">
+                <div class="todo-box">
+                  <div class="todo-container">
+                    <div class="docontainer">
+                      <div class="input-field">
+                        <textarea placeholder="Enter task"></textarea>
+                        <button class="add-button">Add</button>
+                      </div>
+              
+                      <ul class="todoLists"></ul>
+              
+                      <div class="pending-tasks">
+                        <span>You have <span class="pending-num"> no </span> tasks pending.</span>
+                        <button class="clear-button">Clear All</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+        <footer class="footer">
+            <div class="tutorial-content" id="tutorial-content">
+                <h1>Welcome to Pomi Timer</h1>
+            
+                <div class="feature dark">
+                    <div class="feature-box">
+                        <h2>How to Use the Timer</h2>
+                        <div class="content">
+                            <ul>
+                                <li>Modify your desired study duration and break duration in minutes.</li>
+                                <li>Click the "Start" button to initiate the timer.</li>
+                                <li>Stay focused during the study session.</li>
+                                <li>Take a short break when the timer ends.</li>
+                                <li>Repeat the process for subsequent study sessions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="feature light">
+                    <div class="feature-box">
+                        <h2>Managing Tasks</h2>
+                        <div class="content">
+                            <ul>
+                                <li>Type your task in the input field labeled "Add a task".</li>
+                                <li>Click the "Add Task" button to include it in your to-do list.</li>
+                                <li>View and remove completed tasks from the list.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="feature dark">
+                    <div class="feature-box">
+                        <h2>Enjoying Lofi Music</h2>
+                        <div class="content">
+                            <ul>
+                                <li>Access the LoFi Playlist</li>
+                                <li>Listen to calming lofi music while using the Pomi Timer.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="feature light">
+                    <div class="feature-box">
+                        <h2>Tracking Your Study Time</h2>
+                        <div class="content">
+                            <ul>
+                                <li>Observe the "Total Time" display to see how long you've been studying.</li>
+                                <li>Stay motivated and focused throughout your study sessions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="feature dark">
+                    <div class="feature-box">
+                        <h2>Customizing Appearance</h2>
+                        <div class="content">
+                            <ul>
+                                <li>Toggle between modes using the toggle button</li>
+                                <li>Enjoy a comfortable viewing experience based on your preference.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            
+            
+        </footer>
+    </div><!-- /.wrapper -->
+    <!-- Sound --> 
+    <audio id="beep" src="/Pomi V2/alarm.mp3"></audio>
+    <script src="/Pomi V2/scripts/pomodoro.js"></script>
+    <script src="/Pomi V2/scripts/music-list.js"></script>
+    <script src="/Pomi V2/scripts/music.js"></script>
+    <script src="/Pomi V2/scripts/todo.js"></script>
+    <script src="/Pomi V2/scripts/navbar.js"></script>
+    <script defer src="/Pomi V2/scripts/dark.js"></script>
+
+</body>
+</html>
